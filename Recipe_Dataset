@@ -3,21 +3,21 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "ab88e775",
+   "id": "650610da",
    "metadata": {
     "_cell_guid": "b1076dfc-b9ad-4769-8c92-a6c4dae69d19",
     "_uuid": "8f2839f25d086af736a60e9eeb907d3b93b6e0e5",
     "execution": {
-     "iopub.execute_input": "2024-11-25T18:57:02.843403Z",
-     "iopub.status.busy": "2024-11-25T18:57:02.842985Z",
-     "iopub.status.idle": "2024-11-25T18:57:03.741150Z",
-     "shell.execute_reply": "2024-11-25T18:57:03.739986Z"
+     "iopub.execute_input": "2024-11-26T00:13:14.200427Z",
+     "iopub.status.busy": "2024-11-26T00:13:14.199785Z",
+     "iopub.status.idle": "2024-11-26T00:13:59.780248Z",
+     "shell.execute_reply": "2024-11-26T00:13:59.778867Z"
     },
     "papermill": {
-     "duration": 0.903989,
-     "end_time": "2024-11-25T18:57:03.743593",
+     "duration": 45.594757,
+     "end_time": "2024-11-26T00:13:59.786145",
      "exception": false,
-     "start_time": "2024-11-25T18:57:02.839604",
+     "start_time": "2024-11-26T00:13:14.191388",
      "status": "completed"
     },
     "tags": []
@@ -27,8 +27,7 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "/kaggle/input/recipe-ingredients-dataset/train.json\n",
-      "/kaggle/input/recipe-ingredients-dataset/test.json\n"
+      "done\n"
      ]
     }
    ],
@@ -36,7 +35,9 @@
     "# This Python 3 environment comes with many helpful analytics libraries installed\n",
     "# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python\n",
     "# For example, here's several helpful packages to load\n",
-    "\n",
+    "import kagglehub\n",
+    "!pip install -q kaggle\n",
+    "import zipfile\n",
     "import numpy as np # linear algebra\n",
     "import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)\n",
     "\n",
@@ -44,13 +45,284 @@
     "# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory\n",
     "\n",
     "import os\n",
-    "for dirname, _, filenames in os.walk('/kaggle/input'):\n",
-    "    for filename in filenames:\n",
-    "        print(os.path.join(dirname, filename))\n",
-    "\n",
+    "# for dirname, _, filenames in os.walk('/kaggle/input'):\n",
+    "#     for filename in filenames:\n",
+    "#         print(os.path.join(dirname, filename))\n",
     "# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using \"Save & Run All\" \n",
-    "# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session"
+    "# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session\n",
+    "print(\"done\")"
    ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "4fa46ff6",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-26T00:13:59.795033Z",
+     "iopub.status.busy": "2024-11-26T00:13:59.793862Z",
+     "iopub.status.idle": "2024-11-26T00:13:59.935392Z",
+     "shell.execute_reply": "2024-11-26T00:13:59.933897Z"
+    },
+    "papermill": {
+     "duration": 0.148627,
+     "end_time": "2024-11-26T00:13:59.938007",
+     "exception": false,
+     "start_time": "2024-11-26T00:13:59.789380",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "/kaggle/input/food-com-recipes-and-user-interactions\n"
+     ]
+    }
+   ],
+   "source": [
+    "#!kaggle datasets download -d shuyangli94/food-com-recipes-and-user-interactions\n",
+    "food_com_recipes_and_user_interactions_path = kagglehub.dataset_download('shuyangli94/food-com-recipes-and-user-interactions')\n",
+    "print(food_com_recipes_and_user_interactions_path)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "4cd0c7eb",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-26T00:13:59.945739Z",
+     "iopub.status.busy": "2024-11-26T00:13:59.945253Z",
+     "iopub.status.idle": "2024-11-26T00:13:59.950810Z",
+     "shell.execute_reply": "2024-11-26T00:13:59.949662Z"
+    },
+    "papermill": {
+     "duration": 0.011978,
+     "end_time": "2024-11-26T00:13:59.952945",
+     "exception": false,
+     "start_time": "2024-11-26T00:13:59.940967",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# # Step 2: Extract the dataset\n",
+    "# zip_file = '/kaggle/input/food-com-recipes-and-user-interactions'\n",
+    "# extract_to = 'recipes'\n",
+    "\n",
+    "# with zipfile.ZipFile(zip_file, 'r') as zip_ref:\n",
+    "#     zip_ref.extractall(extract_to)\n",
+    "# print(\"done\")\n",
+    "\n",
+    "# with zipfile.ZipFile(food_com_recipes_and_user_interactions_path, 'r') as zip_ref:\n",
+    "#     zip_ref.extractall('recipes')  # Extract to a folder named 'recipes'\n",
+    "    \n",
+    "# print(os.listdir('recipes'))\n",
+    "\n",
+    "file_path = '/kaggle/input/food-com-recipes-and-user-interactions/RAW_recipes.csv'\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "4415cf67",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-26T00:13:59.961079Z",
+     "iopub.status.busy": "2024-11-26T00:13:59.959945Z",
+     "iopub.status.idle": "2024-11-26T00:14:09.036815Z",
+     "shell.execute_reply": "2024-11-26T00:14:09.035353Z"
+    },
+    "papermill": {
+     "duration": 9.083855,
+     "end_time": "2024-11-26T00:14:09.039658",
+     "exception": false,
+     "start_time": "2024-11-26T00:13:59.955803",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "                                         name      id  minutes  \\\n",
+      "0  arriba   baked winter squash mexican style  137739       55   \n",
+      "1            a bit different  breakfast pizza   31490       30   \n",
+      "2                   all in the kitchen  chili  112140      130   \n",
+      "3                          alouette  potatoes   59389       45   \n",
+      "4          amish  tomato ketchup  for canning   44061      190   \n",
+      "\n",
+      "   contributor_id   submitted  \\\n",
+      "0           47892  2005-09-16   \n",
+      "1           26278  2002-06-17   \n",
+      "2          196586  2005-02-25   \n",
+      "3           68585  2003-04-14   \n",
+      "4           41706  2002-10-25   \n",
+      "\n",
+      "                                                tags  \\\n",
+      "0  ['60-minutes-or-less', 'time-to-make', 'course...   \n",
+      "1  ['30-minutes-or-less', 'time-to-make', 'course...   \n",
+      "2  ['time-to-make', 'course', 'preparation', 'mai...   \n",
+      "3  ['60-minutes-or-less', 'time-to-make', 'course...   \n",
+      "4  ['weeknight', 'time-to-make', 'course', 'main-...   \n",
+      "\n",
+      "                                    nutrition  n_steps  \\\n",
+      "0       [51.5, 0.0, 13.0, 0.0, 2.0, 0.0, 4.0]       11   \n",
+      "1   [173.4, 18.0, 0.0, 17.0, 22.0, 35.0, 1.0]        9   \n",
+      "2  [269.8, 22.0, 32.0, 48.0, 39.0, 27.0, 5.0]        6   \n",
+      "3   [368.1, 17.0, 10.0, 2.0, 14.0, 8.0, 20.0]       11   \n",
+      "4   [352.9, 1.0, 337.0, 23.0, 3.0, 0.0, 28.0]        5   \n",
+      "\n",
+      "                                               steps  \\\n",
+      "0  ['make a choice and proceed with recipe', 'dep...   \n",
+      "1  ['preheat oven to 425 degrees f', 'press dough...   \n",
+      "2  ['brown ground beef in large pot', 'add choppe...   \n",
+      "3  ['place potatoes in a large pot of lightly sal...   \n",
+      "4  ['mix all ingredients& boil for 2 1 / 2 hours ...   \n",
+      "\n",
+      "                                         description  \\\n",
+      "0  autumn is my favorite time of year to cook! th...   \n",
+      "1  this recipe calls for the crust to be prebaked...   \n",
+      "2  this modified version of 'mom's' chili was a h...   \n",
+      "3  this is a super easy, great tasting, make ahea...   \n",
+      "4  my dh's amish mother raised him on this recipe...   \n",
+      "\n",
+      "                                         ingredients  n_ingredients  \n",
+      "0  ['winter squash', 'mexican seasoning', 'mixed ...              7  \n",
+      "1  ['prepared pizza crust', 'sausage patty', 'egg...              6  \n",
+      "2  ['ground beef', 'yellow onions', 'diced tomato...             13  \n",
+      "3  ['spreadable cheese with garlic and herbs', 'n...             11  \n",
+      "4  ['tomato juice', 'apple cider vinegar', 'sugar...              8  \n"
+     ]
+    }
+   ],
+   "source": [
+    "df = pd.read_csv(file_path)\n",
+    "print(df.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "c959167f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-26T00:14:09.048496Z",
+     "iopub.status.busy": "2024-11-26T00:14:09.047274Z",
+     "iopub.status.idle": "2024-11-26T00:14:09.328613Z",
+     "shell.execute_reply": "2024-11-26T00:14:09.327433Z"
+    },
+    "papermill": {
+     "duration": 0.288876,
+     "end_time": "2024-11-26T00:14:09.331634",
+     "exception": false,
+     "start_time": "2024-11-26T00:14:09.042758",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "RangeIndex: 231637 entries, 0 to 231636\n",
+      "Data columns (total 12 columns):\n",
+      " #   Column          Non-Null Count   Dtype \n",
+      "---  ------          --------------   ----- \n",
+      " 0   name            231636 non-null  object\n",
+      " 1   id              231637 non-null  int64 \n",
+      " 2   minutes         231637 non-null  int64 \n",
+      " 3   contributor_id  231637 non-null  int64 \n",
+      " 4   submitted       231637 non-null  object\n",
+      " 5   tags            231637 non-null  object\n",
+      " 6   nutrition       231637 non-null  object\n",
+      " 7   n_steps         231637 non-null  int64 \n",
+      " 8   steps           231637 non-null  object\n",
+      " 9   description     226658 non-null  object\n",
+      " 10  ingredients     231637 non-null  object\n",
+      " 11  n_ingredients   231637 non-null  int64 \n",
+      "dtypes: int64(5), object(7)\n",
+      "memory usage: 21.2+ MB\n",
+      "None\n",
+      "                  id       minutes  contributor_id        n_steps  \\\n",
+      "count  231637.000000  2.316370e+05    2.316370e+05  231637.000000   \n",
+      "mean   222014.708984  9.398546e+03    5.534885e+06       9.765499   \n",
+      "std    141206.635626  4.461963e+06    9.979141e+07       5.995128   \n",
+      "min        38.000000  0.000000e+00    2.700000e+01       0.000000   \n",
+      "25%     99944.000000  2.000000e+01    5.690500e+04       6.000000   \n",
+      "50%    207249.000000  4.000000e+01    1.736140e+05       9.000000   \n",
+      "75%    333816.000000  6.500000e+01    3.982750e+05      12.000000   \n",
+      "max    537716.000000  2.147484e+09    2.002290e+09     145.000000   \n",
+      "\n",
+      "       n_ingredients  \n",
+      "count  231637.000000  \n",
+      "mean        9.051153  \n",
+      "std         3.734796  \n",
+      "min         1.000000  \n",
+      "25%         6.000000  \n",
+      "50%         9.000000  \n",
+      "75%        11.000000  \n",
+      "max        43.000000  \n",
+      "Index(['name', 'id', 'minutes', 'contributor_id', 'submitted', 'tags',\n",
+      "       'nutrition', 'n_steps', 'steps', 'description', 'ingredients',\n",
+      "       'n_ingredients'],\n",
+      "      dtype='object')\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(df.info())\n",
+    "print(df.describe())\n",
+    "print(df.columns)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d91445ad",
+   "metadata": {
+    "execution": {
+     "iopub.status.busy": "2024-11-25T20:43:38.769554Z",
+     "iopub.status.idle": "2024-11-25T20:43:38.769979Z",
+     "shell.execute_reply": "2024-11-25T20:43:38.769795Z",
+     "shell.execute_reply.started": "2024-11-25T20:43:38.769777Z"
+    },
+    "papermill": {
+     "duration": 0.002821,
+     "end_time": "2024-11-26T00:14:09.338065",
+     "exception": false,
+     "start_time": "2024-11-26T00:14:09.335244",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "836b5e70",
+   "metadata": {
+    "papermill": {
+     "duration": 0.002833,
+     "end_time": "2024-11-26T00:14:09.343976",
+     "exception": false,
+     "start_time": "2024-11-26T00:14:09.341143",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {
@@ -61,8 +333,14 @@
      "datasetId": 683,
      "sourceId": 1293,
      "sourceType": "datasetVersion"
+    },
+    {
+     "datasetId": 311962,
+     "sourceId": 783630,
+     "sourceType": "datasetVersion"
     }
    ],
+   "dockerImageVersionId": 30786,
    "isGpuEnabled": false,
    "isInternetEnabled": false,
    "language": "python",
@@ -87,14 +365,14 @@
   },
   "papermill": {
    "default_parameters": {},
-   "duration": 4.46891,
-   "end_time": "2024-11-25T18:57:04.165155",
+   "duration": 59.432714,
+   "end_time": "2024-11-26T00:14:10.276503",
    "environment_variables": {},
    "exception": null,
    "input_path": "__notebook__.ipynb",
    "output_path": "__notebook__.ipynb",
    "parameters": {},
-   "start_time": "2024-11-25T18:56:59.696245",
+   "start_time": "2024-11-26T00:13:10.843789",
    "version": "2.6.0"
   }
  },

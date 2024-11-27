@@ -1,0 +1,375 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "da1bd104",
+   "metadata": {
+    "_cell_guid": "b1076dfc-b9ad-4769-8c92-a6c4dae69d19",
+    "_uuid": "8f2839f25d086af736a60e9eeb907d3b93b6e0e5",
+    "execution": {
+     "iopub.execute_input": "2024-11-27T01:37:45.251653Z",
+     "iopub.status.busy": "2024-11-27T01:37:45.251249Z",
+     "iopub.status.idle": "2024-11-27T01:38:30.136935Z",
+     "shell.execute_reply": "2024-11-27T01:38:30.135619Z"
+    },
+    "papermill": {
+     "duration": 44.893873,
+     "end_time": "2024-11-27T01:38:30.140326",
+     "exception": false,
+     "start_time": "2024-11-27T01:37:45.246453",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# This Python 3 environment comes with many helpful analytics libraries installed\n",
+    "# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python\n",
+    "# For example, here's several helpful packages to load\n",
+    "import kagglehub\n",
+    "!pip install -q kaggle\n",
+    "import zipfile\n",
+    "import numpy as np # linear algebra\n",
+    "import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)\n",
+    "\n",
+    "# Input data files are available in the read-only \"../input/\" directory\n",
+    "# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory\n",
+    "\n",
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "d6d03bac",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-27T01:38:30.149358Z",
+     "iopub.status.busy": "2024-11-27T01:38:30.148744Z",
+     "iopub.status.idle": "2024-11-27T01:38:30.629357Z",
+     "shell.execute_reply": "2024-11-27T01:38:30.628336Z"
+    },
+    "papermill": {
+     "duration": 0.488286,
+     "end_time": "2024-11-27T01:38:30.632044",
+     "exception": false,
+     "start_time": "2024-11-27T01:38:30.143758",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "/kaggle/input/food-com-recipes-and-user-interactions\n"
+     ]
+    }
+   ],
+   "source": [
+    "food_com_recipes_and_user_interactions_path = kagglehub.dataset_download('shuyangli94/food-com-recipes-and-user-interactions')\n",
+    "print(food_com_recipes_and_user_interactions_path)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "8e334120",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-27T01:38:30.639657Z",
+     "iopub.status.busy": "2024-11-27T01:38:30.639297Z",
+     "iopub.status.idle": "2024-11-27T01:38:30.644229Z",
+     "shell.execute_reply": "2024-11-27T01:38:30.643150Z"
+    },
+    "papermill": {
+     "duration": 0.011458,
+     "end_time": "2024-11-27T01:38:30.646476",
+     "exception": false,
+     "start_time": "2024-11-27T01:38:30.635018",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "file_path = '/kaggle/input/food-com-recipes-and-user-interactions/RAW_recipes.csv'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "f89cce21",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-27T01:38:30.653673Z",
+     "iopub.status.busy": "2024-11-27T01:38:30.653285Z",
+     "iopub.status.idle": "2024-11-27T01:38:38.702401Z",
+     "shell.execute_reply": "2024-11-27T01:38:38.701311Z"
+    },
+    "papermill": {
+     "duration": 8.055617,
+     "end_time": "2024-11-27T01:38:38.704942",
+     "exception": false,
+     "start_time": "2024-11-27T01:38:30.649325",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "                                                name      id  minutes  \\\n",
+      "231632                                   zydeco soup  486161       60   \n",
+      "231633                              zydeco spice mix  493372        5   \n",
+      "231634                     zydeco ya ya deviled eggs  308080       40   \n",
+      "231635        cookies by design   cookies on a stick  298512       29   \n",
+      "231636  cookies by design   sugar shortbread cookies  298509       20   \n",
+      "\n",
+      "        contributor_id   submitted  \\\n",
+      "231632          227978  2012-08-29   \n",
+      "231633         1500678  2013-01-09   \n",
+      "231634           37779  2008-06-07   \n",
+      "231635          506822  2008-04-15   \n",
+      "231636          506822  2008-04-15   \n",
+      "\n",
+      "                                                     tags  \\\n",
+      "231632  ['ham', '60-minutes-or-less', 'time-to-make', ...   \n",
+      "231633  ['15-minutes-or-less', 'time-to-make', 'course...   \n",
+      "231634  ['60-minutes-or-less', 'time-to-make', 'course...   \n",
+      "231635  ['30-minutes-or-less', 'time-to-make', 'course...   \n",
+      "231636  ['30-minutes-or-less', 'time-to-make', 'course...   \n",
+      "\n",
+      "                                          nutrition  n_steps  \\\n",
+      "231632  [415.2, 26.0, 34.0, 26.0, 44.0, 21.0, 15.0]        7   \n",
+      "231633        [14.8, 0.0, 2.0, 58.0, 1.0, 0.0, 1.0]        1   \n",
+      "231634         [59.2, 6.0, 2.0, 3.0, 6.0, 5.0, 0.0]        7   \n",
+      "231635    [188.0, 11.0, 57.0, 11.0, 7.0, 21.0, 9.0]        9   \n",
+      "231636     [174.9, 14.0, 33.0, 4.0, 4.0, 11.0, 6.0]        5   \n",
+      "\n",
+      "                                                    steps  \\\n",
+      "231632  ['heat oil in a 4-quart dutch oven', 'add cele...   \n",
+      "231633        ['mix all ingredients together thoroughly']   \n",
+      "231634  ['in a bowl , combine the mashed yolks and may...   \n",
+      "231635  ['place melted butter in a large mixing bowl a...   \n",
+      "231636  ['whip sugar and shortening in a large bowl , ...   \n",
+      "\n",
+      "                                              description  \\\n",
+      "231632  this is a delicious soup that i originally fou...   \n",
+      "231633    this spice mix will make your taste buds dance!   \n",
+      "231634                          deviled eggs, cajun-style   \n",
+      "231635  i've heard of the 'cookies by design' company,...   \n",
+      "231636  i've heard of the 'cookies by design' company,...   \n",
+      "\n",
+      "                                              ingredients  n_ingredients  \n",
+      "231632  ['celery', 'onion', 'green sweet pepper', 'gar...             22  \n",
+      "231633  ['paprika', 'salt', 'garlic powder', 'onion po...             13  \n",
+      "231634  ['hard-cooked eggs', 'mayonnaise', 'dijon must...              8  \n",
+      "231635  ['butter', 'eagle brand condensed milk', 'ligh...             10  \n",
+      "231636  ['granulated sugar', 'shortening', 'eggs', 'fl...              7  \n"
+     ]
+    }
+   ],
+   "source": [
+    "df = pd.read_csv(file_path)\n",
+    "print(df.tail())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "5a2e09a8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-27T01:38:38.712317Z",
+     "iopub.status.busy": "2024-11-27T01:38:38.711886Z",
+     "iopub.status.idle": "2024-11-27T01:38:38.717453Z",
+     "shell.execute_reply": "2024-11-27T01:38:38.716379Z"
+    },
+    "papermill": {
+     "duration": 0.012393,
+     "end_time": "2024-11-27T01:38:38.720244",
+     "exception": false,
+     "start_time": "2024-11-27T01:38:38.707851",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Index(['name', 'id', 'minutes', 'contributor_id', 'submitted', 'tags',\n",
+      "       'nutrition', 'n_steps', 'steps', 'description', 'ingredients',\n",
+      "       'n_ingredients'],\n",
+      "      dtype='object')\n"
+     ]
+    }
+   ],
+   "source": [
+    "# print(df.info())\n",
+    "# print(df.describe())\n",
+    "print(df.columns)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "c609aa40",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-27T01:38:38.727622Z",
+     "iopub.status.busy": "2024-11-27T01:38:38.727247Z",
+     "iopub.status.idle": "2024-11-27T01:38:39.049091Z",
+     "shell.execute_reply": "2024-11-27T01:38:39.047951Z"
+    },
+    "papermill": {
+     "duration": 0.328419,
+     "end_time": "2024-11-27T01:38:39.051628",
+     "exception": false,
+     "start_time": "2024-11-27T01:38:38.723209",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "#numberSteps = df[(df['n_steps'] == 6)]\n",
+    "mainIngredient = df[['name','ingredients','n_ingredients','n_steps','minutes']]\n",
+    "#print(mainIngredient.head())\n",
+    "mIng = mainIngredient.values.tolist()\n",
+    "#sIng = []\n",
+    "#print(smIng)\n",
+    "#print(mIng[2][1][2:])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "e59611fc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-27T01:38:39.059114Z",
+     "iopub.status.busy": "2024-11-27T01:38:39.058707Z",
+     "iopub.status.idle": "2024-11-27T01:38:39.063453Z",
+     "shell.execute_reply": "2024-11-27T01:38:39.062357Z"
+    },
+    "papermill": {
+     "duration": 0.01111,
+     "end_time": "2024-11-27T01:38:39.065785",
+     "exception": false,
+     "start_time": "2024-11-27T01:38:39.054675",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "#Quick Sort\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "72e2043d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-27T01:38:39.073292Z",
+     "iopub.status.busy": "2024-11-27T01:38:39.072929Z",
+     "iopub.status.idle": "2024-11-27T01:38:49.561447Z",
+     "shell.execute_reply": "2024-11-27T01:38:49.560231Z"
+    },
+    "papermill": {
+     "duration": 10.495114,
+     "end_time": "2024-11-27T01:38:49.563953",
+     "exception": false,
+     "start_time": "2024-11-27T01:38:39.068839",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "#Shell Sort\n",
+    "n = len(mIng)\n",
+    "gap = n//2\n",
+    "while gap > 0:\n",
+    "        for i in range(gap, n):\n",
+    "            temp = mIng[i]\n",
+    "            j = i            \n",
+    "            temp_ingredient = temp[1][2:10]\n",
+    "            prev = mIng[j - gap]\n",
+    "            prev_ingredient = prev[1][2:10]\n",
+    "            while(j >= gap and prev_ingredient > temp_ingredient):\n",
+    "                prev = mIng[j - gap]\n",
+    "                prev_ingredient = prev[1][2:10]\n",
+    "                mIng[j] = prev\n",
+    "                j -= gap\n",
+    "            mIng[j] = temp\n",
+    "            \n",
+    "        if(gap == 2):\n",
+    "            gap = 1\n",
+    "        else:\n",
+    "            gap //= 2\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kaggle": {
+   "accelerator": "none",
+   "dataSources": [
+    {
+     "datasetId": 683,
+     "sourceId": 1293,
+     "sourceType": "datasetVersion"
+    },
+    {
+     "datasetId": 311962,
+     "sourceId": 783630,
+     "sourceType": "datasetVersion"
+    }
+   ],
+   "dockerImageVersionId": 30786,
+   "isGpuEnabled": false,
+   "isInternetEnabled": false,
+   "language": "python",
+   "sourceType": "notebook"
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.14"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 67.915758,
+   "end_time": "2024-11-27T01:38:50.388387",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "__notebook__.ipynb",
+   "output_path": "__notebook__.ipynb",
+   "parameters": {},
+   "start_time": "2024-11-27T01:37:42.472629",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

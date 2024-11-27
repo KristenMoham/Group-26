@@ -3,34 +3,26 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "650610da",
+   "id": "e21b16b4",
    "metadata": {
     "_cell_guid": "b1076dfc-b9ad-4769-8c92-a6c4dae69d19",
     "_uuid": "8f2839f25d086af736a60e9eeb907d3b93b6e0e5",
     "execution": {
-     "iopub.execute_input": "2024-11-26T00:13:14.200427Z",
-     "iopub.status.busy": "2024-11-26T00:13:14.199785Z",
-     "iopub.status.idle": "2024-11-26T00:13:59.780248Z",
-     "shell.execute_reply": "2024-11-26T00:13:59.778867Z"
+     "iopub.execute_input": "2024-11-27T01:12:37.715754Z",
+     "iopub.status.busy": "2024-11-27T01:12:37.715338Z",
+     "iopub.status.idle": "2024-11-27T01:13:24.620730Z",
+     "shell.execute_reply": "2024-11-27T01:13:24.619060Z"
     },
     "papermill": {
-     "duration": 45.594757,
-     "end_time": "2024-11-26T00:13:59.786145",
+     "duration": 46.913288,
+     "end_time": "2024-11-27T01:13:24.623733",
      "exception": false,
-     "start_time": "2024-11-26T00:13:14.191388",
+     "start_time": "2024-11-27T01:12:37.710445",
      "status": "completed"
     },
     "tags": []
    },
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "done\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# This Python 3 environment comes with many helpful analytics libraries installed\n",
     "# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python\n",
@@ -44,31 +36,25 @@
     "# Input data files are available in the read-only \"../input/\" directory\n",
     "# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory\n",
     "\n",
-    "import os\n",
-    "# for dirname, _, filenames in os.walk('/kaggle/input'):\n",
-    "#     for filename in filenames:\n",
-    "#         print(os.path.join(dirname, filename))\n",
-    "# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using \"Save & Run All\" \n",
-    "# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session\n",
-    "print(\"done\")"
+    "import os"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "4fa46ff6",
+   "id": "7c41713b",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-11-26T00:13:59.795033Z",
-     "iopub.status.busy": "2024-11-26T00:13:59.793862Z",
-     "iopub.status.idle": "2024-11-26T00:13:59.935392Z",
-     "shell.execute_reply": "2024-11-26T00:13:59.933897Z"
+     "iopub.execute_input": "2024-11-27T01:13:24.632882Z",
+     "iopub.status.busy": "2024-11-27T01:13:24.632089Z",
+     "iopub.status.idle": "2024-11-27T01:13:24.795540Z",
+     "shell.execute_reply": "2024-11-27T01:13:24.794117Z"
     },
     "papermill": {
-     "duration": 0.148627,
-     "end_time": "2024-11-26T00:13:59.938007",
+     "duration": 0.170906,
+     "end_time": "2024-11-27T01:13:24.798076",
      "exception": false,
-     "start_time": "2024-11-26T00:13:59.789380",
+     "start_time": "2024-11-27T01:13:24.627170",
      "status": "completed"
     },
     "tags": []
@@ -83,7 +69,6 @@
     }
    ],
    "source": [
-    "#!kaggle datasets download -d shuyangli94/food-com-recipes-and-user-interactions\n",
     "food_com_recipes_and_user_interactions_path = kagglehub.dataset_download('shuyangli94/food-com-recipes-and-user-interactions')\n",
     "print(food_com_recipes_and_user_interactions_path)"
    ]
@@ -91,57 +76,44 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "4cd0c7eb",
+   "id": "d2e4f9be",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-11-26T00:13:59.945739Z",
-     "iopub.status.busy": "2024-11-26T00:13:59.945253Z",
-     "iopub.status.idle": "2024-11-26T00:13:59.950810Z",
-     "shell.execute_reply": "2024-11-26T00:13:59.949662Z"
+     "iopub.execute_input": "2024-11-27T01:13:24.805875Z",
+     "iopub.status.busy": "2024-11-27T01:13:24.805494Z",
+     "iopub.status.idle": "2024-11-27T01:13:24.811529Z",
+     "shell.execute_reply": "2024-11-27T01:13:24.810157Z"
     },
     "papermill": {
-     "duration": 0.011978,
-     "end_time": "2024-11-26T00:13:59.952945",
+     "duration": 0.013955,
+     "end_time": "2024-11-27T01:13:24.815105",
      "exception": false,
-     "start_time": "2024-11-26T00:13:59.940967",
+     "start_time": "2024-11-27T01:13:24.801150",
      "status": "completed"
     },
     "tags": []
    },
    "outputs": [],
    "source": [
-    "# # Step 2: Extract the dataset\n",
-    "# zip_file = '/kaggle/input/food-com-recipes-and-user-interactions'\n",
-    "# extract_to = 'recipes'\n",
-    "\n",
-    "# with zipfile.ZipFile(zip_file, 'r') as zip_ref:\n",
-    "#     zip_ref.extractall(extract_to)\n",
-    "# print(\"done\")\n",
-    "\n",
-    "# with zipfile.ZipFile(food_com_recipes_and_user_interactions_path, 'r') as zip_ref:\n",
-    "#     zip_ref.extractall('recipes')  # Extract to a folder named 'recipes'\n",
-    "    \n",
-    "# print(os.listdir('recipes'))\n",
-    "\n",
-    "file_path = '/kaggle/input/food-com-recipes-and-user-interactions/RAW_recipes.csv'\n"
+    "file_path = '/kaggle/input/food-com-recipes-and-user-interactions/RAW_recipes.csv'"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 4,
-   "id": "4415cf67",
+   "id": "28d6f3e1",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-11-26T00:13:59.961079Z",
-     "iopub.status.busy": "2024-11-26T00:13:59.959945Z",
-     "iopub.status.idle": "2024-11-26T00:14:09.036815Z",
-     "shell.execute_reply": "2024-11-26T00:14:09.035353Z"
+     "iopub.execute_input": "2024-11-27T01:13:24.824487Z",
+     "iopub.status.busy": "2024-11-27T01:13:24.823322Z",
+     "iopub.status.idle": "2024-11-27T01:13:34.162305Z",
+     "shell.execute_reply": "2024-11-27T01:13:34.160788Z"
     },
     "papermill": {
-     "duration": 9.083855,
-     "end_time": "2024-11-26T00:14:09.039658",
+     "duration": 9.346987,
+     "end_time": "2024-11-27T01:13:34.165643",
      "exception": false,
-     "start_time": "2024-11-26T00:13:59.955803",
+     "start_time": "2024-11-27T01:13:24.818656",
      "status": "completed"
     },
     "tags": []
@@ -151,78 +123,78 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "                                         name      id  minutes  \\\n",
-      "0  arriba   baked winter squash mexican style  137739       55   \n",
-      "1            a bit different  breakfast pizza   31490       30   \n",
-      "2                   all in the kitchen  chili  112140      130   \n",
-      "3                          alouette  potatoes   59389       45   \n",
-      "4          amish  tomato ketchup  for canning   44061      190   \n",
+      "                                                name      id  minutes  \\\n",
+      "231632                                   zydeco soup  486161       60   \n",
+      "231633                              zydeco spice mix  493372        5   \n",
+      "231634                     zydeco ya ya deviled eggs  308080       40   \n",
+      "231635        cookies by design   cookies on a stick  298512       29   \n",
+      "231636  cookies by design   sugar shortbread cookies  298509       20   \n",
       "\n",
-      "   contributor_id   submitted  \\\n",
-      "0           47892  2005-09-16   \n",
-      "1           26278  2002-06-17   \n",
-      "2          196586  2005-02-25   \n",
-      "3           68585  2003-04-14   \n",
-      "4           41706  2002-10-25   \n",
+      "        contributor_id   submitted  \\\n",
+      "231632          227978  2012-08-29   \n",
+      "231633         1500678  2013-01-09   \n",
+      "231634           37779  2008-06-07   \n",
+      "231635          506822  2008-04-15   \n",
+      "231636          506822  2008-04-15   \n",
       "\n",
-      "                                                tags  \\\n",
-      "0  ['60-minutes-or-less', 'time-to-make', 'course...   \n",
-      "1  ['30-minutes-or-less', 'time-to-make', 'course...   \n",
-      "2  ['time-to-make', 'course', 'preparation', 'mai...   \n",
-      "3  ['60-minutes-or-less', 'time-to-make', 'course...   \n",
-      "4  ['weeknight', 'time-to-make', 'course', 'main-...   \n",
+      "                                                     tags  \\\n",
+      "231632  ['ham', '60-minutes-or-less', 'time-to-make', ...   \n",
+      "231633  ['15-minutes-or-less', 'time-to-make', 'course...   \n",
+      "231634  ['60-minutes-or-less', 'time-to-make', 'course...   \n",
+      "231635  ['30-minutes-or-less', 'time-to-make', 'course...   \n",
+      "231636  ['30-minutes-or-less', 'time-to-make', 'course...   \n",
       "\n",
-      "                                    nutrition  n_steps  \\\n",
-      "0       [51.5, 0.0, 13.0, 0.0, 2.0, 0.0, 4.0]       11   \n",
-      "1   [173.4, 18.0, 0.0, 17.0, 22.0, 35.0, 1.0]        9   \n",
-      "2  [269.8, 22.0, 32.0, 48.0, 39.0, 27.0, 5.0]        6   \n",
-      "3   [368.1, 17.0, 10.0, 2.0, 14.0, 8.0, 20.0]       11   \n",
-      "4   [352.9, 1.0, 337.0, 23.0, 3.0, 0.0, 28.0]        5   \n",
+      "                                          nutrition  n_steps  \\\n",
+      "231632  [415.2, 26.0, 34.0, 26.0, 44.0, 21.0, 15.0]        7   \n",
+      "231633        [14.8, 0.0, 2.0, 58.0, 1.0, 0.0, 1.0]        1   \n",
+      "231634         [59.2, 6.0, 2.0, 3.0, 6.0, 5.0, 0.0]        7   \n",
+      "231635    [188.0, 11.0, 57.0, 11.0, 7.0, 21.0, 9.0]        9   \n",
+      "231636     [174.9, 14.0, 33.0, 4.0, 4.0, 11.0, 6.0]        5   \n",
       "\n",
-      "                                               steps  \\\n",
-      "0  ['make a choice and proceed with recipe', 'dep...   \n",
-      "1  ['preheat oven to 425 degrees f', 'press dough...   \n",
-      "2  ['brown ground beef in large pot', 'add choppe...   \n",
-      "3  ['place potatoes in a large pot of lightly sal...   \n",
-      "4  ['mix all ingredients& boil for 2 1 / 2 hours ...   \n",
+      "                                                    steps  \\\n",
+      "231632  ['heat oil in a 4-quart dutch oven', 'add cele...   \n",
+      "231633        ['mix all ingredients together thoroughly']   \n",
+      "231634  ['in a bowl , combine the mashed yolks and may...   \n",
+      "231635  ['place melted butter in a large mixing bowl a...   \n",
+      "231636  ['whip sugar and shortening in a large bowl , ...   \n",
       "\n",
-      "                                         description  \\\n",
-      "0  autumn is my favorite time of year to cook! th...   \n",
-      "1  this recipe calls for the crust to be prebaked...   \n",
-      "2  this modified version of 'mom's' chili was a h...   \n",
-      "3  this is a super easy, great tasting, make ahea...   \n",
-      "4  my dh's amish mother raised him on this recipe...   \n",
+      "                                              description  \\\n",
+      "231632  this is a delicious soup that i originally fou...   \n",
+      "231633    this spice mix will make your taste buds dance!   \n",
+      "231634                          deviled eggs, cajun-style   \n",
+      "231635  i've heard of the 'cookies by design' company,...   \n",
+      "231636  i've heard of the 'cookies by design' company,...   \n",
       "\n",
-      "                                         ingredients  n_ingredients  \n",
-      "0  ['winter squash', 'mexican seasoning', 'mixed ...              7  \n",
-      "1  ['prepared pizza crust', 'sausage patty', 'egg...              6  \n",
-      "2  ['ground beef', 'yellow onions', 'diced tomato...             13  \n",
-      "3  ['spreadable cheese with garlic and herbs', 'n...             11  \n",
-      "4  ['tomato juice', 'apple cider vinegar', 'sugar...              8  \n"
+      "                                              ingredients  n_ingredients  \n",
+      "231632  ['celery', 'onion', 'green sweet pepper', 'gar...             22  \n",
+      "231633  ['paprika', 'salt', 'garlic powder', 'onion po...             13  \n",
+      "231634  ['hard-cooked eggs', 'mayonnaise', 'dijon must...              8  \n",
+      "231635  ['butter', 'eagle brand condensed milk', 'ligh...             10  \n",
+      "231636  ['granulated sugar', 'shortening', 'eggs', 'fl...              7  \n"
      ]
     }
    ],
    "source": [
     "df = pd.read_csv(file_path)\n",
-    "print(df.head())"
+    "print(df.tail())"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "c959167f",
+   "id": "1cb5921d",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-11-26T00:14:09.048496Z",
-     "iopub.status.busy": "2024-11-26T00:14:09.047274Z",
-     "iopub.status.idle": "2024-11-26T00:14:09.328613Z",
-     "shell.execute_reply": "2024-11-26T00:14:09.327433Z"
+     "iopub.execute_input": "2024-11-27T01:13:34.173737Z",
+     "iopub.status.busy": "2024-11-27T01:13:34.173325Z",
+     "iopub.status.idle": "2024-11-27T01:13:34.180387Z",
+     "shell.execute_reply": "2024-11-27T01:13:34.178992Z"
     },
     "papermill": {
-     "duration": 0.288876,
-     "end_time": "2024-11-26T00:14:09.331634",
+     "duration": 0.013729,
+     "end_time": "2024-11-27T01:13:34.182728",
      "exception": false,
-     "start_time": "2024-11-26T00:14:09.042758",
+     "start_time": "2024-11-27T01:13:34.168999",
      "status": "completed"
     },
     "tags": []
@@ -232,45 +204,6 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "<class 'pandas.core.frame.DataFrame'>\n",
-      "RangeIndex: 231637 entries, 0 to 231636\n",
-      "Data columns (total 12 columns):\n",
-      " #   Column          Non-Null Count   Dtype \n",
-      "---  ------          --------------   ----- \n",
-      " 0   name            231636 non-null  object\n",
-      " 1   id              231637 non-null  int64 \n",
-      " 2   minutes         231637 non-null  int64 \n",
-      " 3   contributor_id  231637 non-null  int64 \n",
-      " 4   submitted       231637 non-null  object\n",
-      " 5   tags            231637 non-null  object\n",
-      " 6   nutrition       231637 non-null  object\n",
-      " 7   n_steps         231637 non-null  int64 \n",
-      " 8   steps           231637 non-null  object\n",
-      " 9   description     226658 non-null  object\n",
-      " 10  ingredients     231637 non-null  object\n",
-      " 11  n_ingredients   231637 non-null  int64 \n",
-      "dtypes: int64(5), object(7)\n",
-      "memory usage: 21.2+ MB\n",
-      "None\n",
-      "                  id       minutes  contributor_id        n_steps  \\\n",
-      "count  231637.000000  2.316370e+05    2.316370e+05  231637.000000   \n",
-      "mean   222014.708984  9.398546e+03    5.534885e+06       9.765499   \n",
-      "std    141206.635626  4.461963e+06    9.979141e+07       5.995128   \n",
-      "min        38.000000  0.000000e+00    2.700000e+01       0.000000   \n",
-      "25%     99944.000000  2.000000e+01    5.690500e+04       6.000000   \n",
-      "50%    207249.000000  4.000000e+01    1.736140e+05       9.000000   \n",
-      "75%    333816.000000  6.500000e+01    3.982750e+05      12.000000   \n",
-      "max    537716.000000  2.147484e+09    2.002290e+09     145.000000   \n",
-      "\n",
-      "       n_ingredients  \n",
-      "count  231637.000000  \n",
-      "mean        9.051153  \n",
-      "std         3.734796  \n",
-      "min         1.000000  \n",
-      "25%         6.000000  \n",
-      "50%         9.000000  \n",
-      "75%        11.000000  \n",
-      "max        43.000000  \n",
       "Index(['name', 'id', 'minutes', 'contributor_id', 'submitted', 'tags',\n",
       "       'nutrition', 'n_steps', 'steps', 'description', 'ingredients',\n",
       "       'n_ingredients'],\n",
@@ -279,50 +212,155 @@
     }
    ],
    "source": [
-    "print(df.info())\n",
-    "print(df.describe())\n",
+    "# print(df.info())\n",
+    "# print(df.describe())\n",
     "print(df.columns)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "d91445ad",
+   "execution_count": 6,
+   "id": "98855416",
    "metadata": {
     "execution": {
-     "iopub.status.busy": "2024-11-25T20:43:38.769554Z",
-     "iopub.status.idle": "2024-11-25T20:43:38.769979Z",
-     "shell.execute_reply": "2024-11-25T20:43:38.769795Z",
-     "shell.execute_reply.started": "2024-11-25T20:43:38.769777Z"
+     "iopub.execute_input": "2024-11-27T01:13:34.190343Z",
+     "iopub.status.busy": "2024-11-27T01:13:34.189957Z",
+     "iopub.status.idle": "2024-11-27T01:13:34.560511Z",
+     "shell.execute_reply": "2024-11-27T01:13:34.559132Z"
     },
     "papermill": {
-     "duration": 0.002821,
-     "end_time": "2024-11-26T00:14:09.338065",
+     "duration": 0.377501,
+     "end_time": "2024-11-27T01:13:34.563258",
      "exception": false,
-     "start_time": "2024-11-26T00:14:09.335244",
+     "start_time": "2024-11-27T01:13:34.185757",
      "status": "completed"
     },
     "tags": []
    },
    "outputs": [],
-   "source": []
+   "source": [
+    "#numberSteps = df[(df['n_steps'] == 6)]\n",
+    "mainIngredient = df[['name','ingredients','n_ingredients','n_steps','minutes']]\n",
+    "#print(mainIngredient.head())\n",
+    "mIng = mainIngredient.values.tolist()\n",
+    "sIng = []\n",
+    "#print(smIng)\n",
+    "#print(mIng[2][1][2:])"
+   ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "836b5e70",
+   "execution_count": 7,
+   "id": "0a830b06",
    "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-27T01:13:34.571628Z",
+     "iopub.status.busy": "2024-11-27T01:13:34.571207Z",
+     "iopub.status.idle": "2024-11-27T01:13:34.577433Z",
+     "shell.execute_reply": "2024-11-27T01:13:34.575996Z"
+    },
     "papermill": {
-     "duration": 0.002833,
-     "end_time": "2024-11-26T00:14:09.343976",
+     "duration": 0.013616,
+     "end_time": "2024-11-27T01:13:34.580114",
      "exception": false,
-     "start_time": "2024-11-26T00:14:09.341143",
+     "start_time": "2024-11-27T01:13:34.566498",
      "status": "completed"
     },
     "tags": []
    },
    "outputs": [],
-   "source": []
+   "source": [
+    "#Quick Sort\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "8fe19298",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-11-27T01:13:34.588037Z",
+     "iopub.status.busy": "2024-11-27T01:13:34.587634Z",
+     "iopub.status.idle": "2024-11-27T01:13:46.788718Z",
+     "shell.execute_reply": "2024-11-27T01:13:46.786973Z"
+    },
+    "papermill": {
+     "duration": 12.208252,
+     "end_time": "2024-11-27T01:13:46.791554",
+     "exception": false,
+     "start_time": "2024-11-27T01:13:34.583302",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "57909\n",
+      "28954\n",
+      "14477\n",
+      "7238\n",
+      "3619\n",
+      "1809\n",
+      "904\n",
+      "452\n",
+      "226\n",
+      "113\n",
+      "56\n",
+      "28\n",
+      "14\n",
+      "7\n",
+      "3\n",
+      "1\n",
+      "0\n",
+      "['1% fat buttermilk', 'low-fat sour cream', 'parmesan cheese', 'fresh basil', 'onion salt', 'garlic cloves']\n",
+      "['1% fat buttermilk', 'reduced-fat mayonnaise', 'reduced-fat sour cream', 'fresh parsley', 'garlic clove', 'sugar', 'dill weed', 'salt', 'ground mustard', 'pepper']\n",
+      "['1% fat cottage cheese', 'sugar', '1% low-fat milk', 'canola oil', 'vanilla extract', 'all-purpose flour', 'baking powder', 'salt', 'reduced-fat cream cheese', 'egg', 'lemon peel', 'blueberries', 'water', \"confectioners' sugar\", 'lemon juice']\n",
+      "['1% fat cottage cheese', 'parmesan cheese', 'low-fat buttermilk', 'lemon juice', 'water', 'shallot', 'garlic', 'fresh basil', 'fresh oregano', 'fresh ground black pepper']\n",
+      "['1% fat cottage cheese', 'frozen orange juice concentrate', 'powdered sugar', 'skim milk', 'all-purpose flour', 'honey', 'fresh lemon rind', 'eggs', 'vegetable oil cooking spray', 'fresh strawberries']\n",
+      "['1% fat cottage cheese', 'light cream cheese', 'nonfat sour cream', 'fat-free mayonnaise', 'onion', 'green bell pepper', 'fresh parsley', 'margarine', 'flour', 'skim milk', 'low sodium chicken broth', 'poultry seasoning', 'salt', 'garlic powder', 'lasagna noodles', 'vegetable oil cooking spray', 'cooked chicken breasts', 'dry breadcrumbs', 'paprika']\n",
+      "['1% fat cottage cheese', 'sugar substitute', 'pecan halves', 'ground cinnamon']\n",
+      "['1% fat cottage cheese', 'low-fat mayonnaise', 'anchovies', 'lemon juice', 'worcestershire sauce', 'garlic', 'olive oil', 'parmesan cheese', 'salt & freshly ground black pepper']\n",
+      "['1% fat cottage cheese', 'low-fat sour cream', 'green onion', 'garlic clove', 'parsley', 'fresh herbs', 'salt and pepper']\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Shell Sort\n",
+    "n = len(mIng)\n",
+    "gap = n//2\n",
+    "while gap > 0:\n",
+    "        for i in range(gap, n):\n",
+    "            temp = mIng[i]\n",
+    "            j = i            \n",
+    "            temp_ingredient = temp[1][2:10]\n",
+    "            prev = mIng[j - gap]\n",
+    "            prev_ingredient = prev[1][2:10]\n",
+    "            while(j >= gap and prev_ingredient > temp_ingredient):\n",
+    "                prev = mIng[j - gap]\n",
+    "                prev_ingredient = prev[1][2:10]\n",
+    "                mIng[j] = prev\n",
+    "                j -= gap\n",
+    "            mIng[j] = temp\n",
+    "            \n",
+    "        if(gap == 2):\n",
+    "            gap = 1\n",
+    "        else:\n",
+    "            gap //= 2\n",
+    "        print(gap)\n",
+    "\n",
+    "print(mIng[1][1])\n",
+    "print(mIng[2][1])\n",
+    "print(mIng[3][1])\n",
+    "print(mIng[4][1])\n",
+    "print(mIng[5][1])\n",
+    "print(mIng[6][1])\n",
+    "print(mIng[7][1])\n",
+    "print(mIng[8][1])\n",
+    "print(mIng[9][1])"
+   ]
   }
  ],
  "metadata": {
@@ -365,14 +403,14 @@
   },
   "papermill": {
    "default_parameters": {},
-   "duration": 59.432714,
-   "end_time": "2024-11-26T00:14:10.276503",
+   "duration": 73.20519,
+   "end_time": "2024-11-27T01:13:47.821114",
    "environment_variables": {},
    "exception": null,
    "input_path": "__notebook__.ipynb",
    "output_path": "__notebook__.ipynb",
    "parameters": {},
-   "start_time": "2024-11-26T00:13:10.843789",
+   "start_time": "2024-11-27T01:12:34.615924",
    "version": "2.6.0"
   }
  },

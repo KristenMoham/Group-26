@@ -63,6 +63,7 @@ void Sort::readCSV(std::string file) {
 
                 // Read quoted ingredients, skips anything that doesn't match formats
                 //also generally no one would have them lying around their pantry anyways !
+                //this specifically goes after recipes that have ingredients with double quotes...
                 if (!std::getline(s, col, '"') || !std::getline(s, ingredients, '"')) {
                     continue;
                 }
@@ -78,6 +79,7 @@ void Sort::readCSV(std::string file) {
                 }
                 //pushes row into recipe data
                 recipeData.push_back(row);
+                //instead of ingredients, it attaches the stats of the recipe
                 recipeStats[name] = stats;
                 }
             //required for trys
@@ -118,19 +120,21 @@ void Sort::readCSV(std::string file) {
     }
 }
 
-//these functions should return a vector which is basically the resorted recipeData
-//OR you could make a function that extracts the recipes with that main ingredient
-//and puts it into a vector to sort and that gets returned instead.
-//you do NOT have to reorder the unordered_map recipeIngredients, that is there
-//to assist you in looking up a recipe's ingredients (it's O(1) operation)
+//these functions should return a vector which is a resorted vector of all the recipes that share a common main ingredient
+//use findRecipes() for this, I would take a random string from the excel sheet in the google drive linked
+//unordered_map recipeIngredients or recipeStats, that is there to assist you in looking up a recipe's ingredients and stats
+//it's O(1) operation
 std::vector<std::vector<std::string>> Sort::shellShort(std::vector<std::vector<std::string>> vec, int option) {
     return std::vector<std::vector<std::string>>();
 }
 
 //taken from Sorting slides
 void Sort::quickShort(std::vector<std::vector<std::string>>& vec, int option, int low, int high) {
+    //not done if the 'pointers' aren't past eachother
     if(low < high){
+        //index of the pivot/what we sort around
         int pivot = partition(vec, option, low, high);
+        //quick sorts the 2 halves
         quickShort(vec, option, low, pivot - 1);
         quickShort(vec, option, pivot + 1, high);
     }
@@ -141,24 +145,29 @@ int Sort::partition(std::vector<std::vector<std::string>>& vec, int option, int 
     int pivot = std::stoi(vec[low][option]);
     int up = low, down = high;
 
+    //as long as up and down 'pointers' dont pass eachother
     while(up < down){
+        //continuously increment up until it is greater than the val of pivot
         for(int j = low; j < high; j++){
             if(std::stoi(vec[up][option]) > pivot){
                 break;
             }
             up++;
         }
+        //continuously decrement down until it is less than the val of pivot
         for(int j = high; j > low;  j--){
             if(std::stoi(vec[down][option]) < pivot){
                 break;
             }
             down--;
         }
+        //if up is still less than down, swap the two
+        //up's element is greater than down's element at this point
         if(up < down){
             std::swap(vec[up], vec[down]);
         }
     }
-
+    //swap the pivot with down, return down so it can be used as the new pivot
     std::swap(vec[low], vec[down]);
     return down;
 }

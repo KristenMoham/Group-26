@@ -3,21 +3,21 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "8d5f87c3",
+   "id": "ce3ed001",
    "metadata": {
     "_cell_guid": "b1076dfc-b9ad-4769-8c92-a6c4dae69d19",
     "_uuid": "8f2839f25d086af736a60e9eeb907d3b93b6e0e5",
     "execution": {
-     "iopub.execute_input": "2024-11-27T02:34:41.554146Z",
-     "iopub.status.busy": "2024-11-27T02:34:41.553690Z",
-     "iopub.status.idle": "2024-11-27T02:35:26.414846Z",
-     "shell.execute_reply": "2024-11-27T02:35:26.413609Z"
+     "iopub.execute_input": "2024-12-04T00:52:21.665806Z",
+     "iopub.status.busy": "2024-12-04T00:52:21.664638Z",
+     "iopub.status.idle": "2024-12-04T00:53:06.896210Z",
+     "shell.execute_reply": "2024-12-04T00:53:06.894830Z"
     },
     "papermill": {
-     "duration": 44.868973,
-     "end_time": "2024-11-27T02:35:26.417625",
+     "duration": 45.239845,
+     "end_time": "2024-12-04T00:53:06.899696",
      "exception": false,
-     "start_time": "2024-11-27T02:34:41.548652",
+     "start_time": "2024-12-04T00:52:21.659851",
      "status": "completed"
     },
     "tags": []
@@ -41,19 +41,19 @@
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "8675b5af",
+   "id": "5c2d38bc",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-11-27T02:35:26.425317Z",
-     "iopub.status.busy": "2024-11-27T02:35:26.424770Z",
-     "iopub.status.idle": "2024-11-27T02:35:26.583922Z",
-     "shell.execute_reply": "2024-11-27T02:35:26.582404Z"
+     "iopub.execute_input": "2024-12-04T00:53:06.907499Z",
+     "iopub.status.busy": "2024-12-04T00:53:06.906973Z",
+     "iopub.status.idle": "2024-12-04T00:53:07.387560Z",
+     "shell.execute_reply": "2024-12-04T00:53:07.386425Z"
     },
     "papermill": {
-     "duration": 0.165568,
-     "end_time": "2024-11-27T02:35:26.586318",
+     "duration": 0.487651,
+     "end_time": "2024-12-04T00:53:07.390787",
      "exception": false,
-     "start_time": "2024-11-27T02:35:26.420750",
+     "start_time": "2024-12-04T00:53:06.903136",
      "status": "completed"
     },
     "tags": []
@@ -76,19 +76,19 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "5746bfda",
+   "id": "08a41a6f",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-11-27T02:35:26.593159Z",
-     "iopub.status.busy": "2024-11-27T02:35:26.592748Z",
-     "iopub.status.idle": "2024-11-27T02:35:26.597638Z",
-     "shell.execute_reply": "2024-11-27T02:35:26.596518Z"
+     "iopub.execute_input": "2024-12-04T00:53:07.397772Z",
+     "iopub.status.busy": "2024-12-04T00:53:07.397364Z",
+     "iopub.status.idle": "2024-12-04T00:53:07.402452Z",
+     "shell.execute_reply": "2024-12-04T00:53:07.401421Z"
     },
     "papermill": {
-     "duration": 0.010841,
-     "end_time": "2024-11-27T02:35:26.599923",
+     "duration": 0.01115,
+     "end_time": "2024-12-04T00:53:07.404642",
      "exception": false,
-     "start_time": "2024-11-27T02:35:26.589082",
+     "start_time": "2024-12-04T00:53:07.393492",
      "status": "completed"
     },
     "tags": []
@@ -102,19 +102,19 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "id": "54c00e24",
+   "id": "a9935793",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-11-27T02:35:26.606923Z",
-     "iopub.status.busy": "2024-11-27T02:35:26.606481Z",
-     "iopub.status.idle": "2024-11-27T02:35:34.958319Z",
-     "shell.execute_reply": "2024-11-27T02:35:34.956956Z"
+     "iopub.execute_input": "2024-12-04T00:53:07.411245Z",
+     "iopub.status.busy": "2024-12-04T00:53:07.410836Z",
+     "iopub.status.idle": "2024-12-04T00:53:15.205712Z",
+     "shell.execute_reply": "2024-12-04T00:53:15.204570Z"
     },
     "papermill": {
-     "duration": 8.358827,
-     "end_time": "2024-11-27T02:35:34.961302",
+     "duration": 7.801295,
+     "end_time": "2024-12-04T00:53:15.208550",
      "exception": false,
-     "start_time": "2024-11-27T02:35:26.602475",
+     "start_time": "2024-12-04T00:53:07.407255",
      "status": "completed"
     },
     "tags": []
@@ -128,19 +128,19 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "59a2a0ab",
+   "id": "200d7ef8",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-11-27T02:35:34.968117Z",
-     "iopub.status.busy": "2024-11-27T02:35:34.967686Z",
-     "iopub.status.idle": "2024-11-27T02:35:35.305907Z",
-     "shell.execute_reply": "2024-11-27T02:35:35.304633Z"
+     "iopub.execute_input": "2024-12-04T00:53:15.215909Z",
+     "iopub.status.busy": "2024-12-04T00:53:15.215478Z",
+     "iopub.status.idle": "2024-12-04T00:53:15.569522Z",
+     "shell.execute_reply": "2024-12-04T00:53:15.568289Z"
     },
     "papermill": {
-     "duration": 0.344353,
-     "end_time": "2024-11-27T02:35:35.308407",
+     "duration": 0.360973,
+     "end_time": "2024-12-04T00:53:15.572257",
      "exception": false,
-     "start_time": "2024-11-27T02:35:34.964054",
+     "start_time": "2024-12-04T00:53:15.211284",
      "status": "completed"
     },
     "tags": []
@@ -148,26 +148,26 @@
    "outputs": [],
    "source": [
     "#\n",
-    "mainIngredient = df[['name','ingredients','n_ingredients','n_steps','minutes']]\n",
+    "mainIngredient = df[['name','ingredients','n_ingredients','n_steps','minutes', 'id']]\n",
     "mIng = mainIngredient.values.tolist()"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 6,
-   "id": "4d740f9a",
+   "id": "7fa594b5",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-11-27T02:35:35.316156Z",
-     "iopub.status.busy": "2024-11-27T02:35:35.315630Z",
-     "iopub.status.idle": "2024-11-27T02:35:45.810954Z",
-     "shell.execute_reply": "2024-11-27T02:35:45.809696Z"
+     "iopub.execute_input": "2024-12-04T00:53:15.579319Z",
+     "iopub.status.busy": "2024-12-04T00:53:15.578918Z",
+     "iopub.status.idle": "2024-12-04T00:53:26.092100Z",
+     "shell.execute_reply": "2024-12-04T00:53:26.090372Z"
     },
     "papermill": {
-     "duration": 10.502661,
-     "end_time": "2024-11-27T02:35:45.813949",
+     "duration": 10.519979,
+     "end_time": "2024-12-04T00:53:26.094974",
      "exception": false,
-     "start_time": "2024-11-27T02:35:35.311288",
+     "start_time": "2024-12-04T00:53:15.574995",
      "status": "completed"
     },
     "tags": []
@@ -200,124 +200,30 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "693ee05c",
+   "id": "68e3b7a0",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-11-27T02:35:45.821045Z",
-     "iopub.status.busy": "2024-11-27T02:35:45.820515Z",
-     "iopub.status.idle": "2024-11-27T02:35:47.743756Z",
-     "shell.execute_reply": "2024-11-27T02:35:47.742687Z"
+     "iopub.execute_input": "2024-12-04T00:53:26.102699Z",
+     "iopub.status.busy": "2024-12-04T00:53:26.102329Z",
+     "iopub.status.idle": "2024-12-04T00:53:28.274414Z",
+     "shell.execute_reply": "2024-12-04T00:53:28.273228Z"
     },
     "papermill": {
-     "duration": 1.929182,
-     "end_time": "2024-11-27T02:35:47.745952",
+     "duration": 2.178557,
+     "end_time": "2024-12-04T00:53:28.276935",
      "exception": false,
-     "start_time": "2024-11-27T02:35:45.816770",
+     "start_time": "2024-12-04T00:53:26.098378",
      "status": "completed"
     },
     "tags": []
    },
-   "outputs": [
-    {
-     "data": {
-      "text/html": [
-       "<div>\n",
-       "<style scoped>\n",
-       "    .dataframe tbody tr th:only-of-type {\n",
-       "        vertical-align: middle;\n",
-       "    }\n",
-       "\n",
-       "    .dataframe tbody tr th {\n",
-       "        vertical-align: top;\n",
-       "    }\n",
-       "\n",
-       "    .dataframe thead th {\n",
-       "        text-align: right;\n",
-       "    }\n",
-       "</style>\n",
-       "<table border=\"1\" class=\"dataframe\">\n",
-       "  <thead>\n",
-       "    <tr style=\"text-align: right;\">\n",
-       "      <th></th>\n",
-       "      <th>0</th>\n",
-       "      <th>1</th>\n",
-       "      <th>2</th>\n",
-       "      <th>3</th>\n",
-       "      <th>4</th>\n",
-       "    </tr>\n",
-       "  </thead>\n",
-       "  <tbody>\n",
-       "    <tr>\n",
-       "      <th>0</th>\n",
-       "      <td>easy low fat chicken souvlaki</td>\n",
-       "      <td>['1% fat buttermilk', 'liquid honey', 'salt', ...</td>\n",
-       "      <td>8</td>\n",
-       "      <td>3</td>\n",
-       "      <td>490</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>1</th>\n",
-       "      <td>low fat buttermilk basil salad dressing</td>\n",
-       "      <td>['1% fat buttermilk', 'low-fat sour cream', 'p...</td>\n",
-       "      <td>6</td>\n",
-       "      <td>3</td>\n",
-       "      <td>65</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>2</th>\n",
-       "      <td>ranch style buttermilk dressing  light version</td>\n",
-       "      <td>['1% fat buttermilk', 'reduced-fat mayonnaise'...</td>\n",
-       "      <td>10</td>\n",
-       "      <td>3</td>\n",
-       "      <td>10</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>3</th>\n",
-       "      <td>blueberry cheese danish</td>\n",
-       "      <td>['1% fat cottage cheese', 'sugar', '1% low-fat...</td>\n",
-       "      <td>15</td>\n",
-       "      <td>20</td>\n",
-       "      <td>45</td>\n",
-       "    </tr>\n",
-       "    <tr>\n",
-       "      <th>4</th>\n",
-       "      <td>creamy ranch dressing</td>\n",
-       "      <td>['1% fat cottage cheese', 'parmesan cheese', '...</td>\n",
-       "      <td>10</td>\n",
-       "      <td>3</td>\n",
-       "      <td>10</td>\n",
-       "    </tr>\n",
-       "  </tbody>\n",
-       "</table>\n",
-       "</div>"
-      ],
-      "text/plain": [
-       "                                                0  \\\n",
-       "0                   easy low fat chicken souvlaki   \n",
-       "1         low fat buttermilk basil salad dressing   \n",
-       "2  ranch style buttermilk dressing  light version   \n",
-       "3                         blueberry cheese danish   \n",
-       "4                           creamy ranch dressing   \n",
-       "\n",
-       "                                                   1   2   3    4  \n",
-       "0  ['1% fat buttermilk', 'liquid honey', 'salt', ...   8   3  490  \n",
-       "1  ['1% fat buttermilk', 'low-fat sour cream', 'p...   6   3   65  \n",
-       "2  ['1% fat buttermilk', 'reduced-fat mayonnaise'...  10   3   10  \n",
-       "3  ['1% fat cottage cheese', 'sugar', '1% low-fat...  15  20   45  \n",
-       "4  ['1% fat cottage cheese', 'parmesan cheese', '...  10   3   10  "
-      ]
-     },
-     "execution_count": 7,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "#converting list to csv\n",
     "d = {'col1': mIng[0][0:], 'col2': mIng[1][1]}\n",
     "sIngDF = pd.DataFrame(data = mIng)\n",
     "sIngDF.to_csv('Sorted-Recipes.csv')\n",
-    "sIngDF.head()"
+    "#sIngDF.head()"
    ]
   }
  ],
@@ -361,14 +267,14 @@
   },
   "papermill": {
    "default_parameters": {},
-   "duration": 69.72369,
-   "end_time": "2024-11-27T02:35:48.570995",
+   "duration": 70.544878,
+   "end_time": "2024-12-04T00:53:29.202583",
    "environment_variables": {},
    "exception": null,
    "input_path": "__notebook__.ipynb",
    "output_path": "__notebook__.ipynb",
    "parameters": {},
-   "start_time": "2024-11-27T02:34:38.847305",
+   "start_time": "2024-12-04T00:52:18.657705",
    "version": "2.6.0"
   }
  },

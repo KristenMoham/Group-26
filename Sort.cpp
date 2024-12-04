@@ -151,9 +151,9 @@ double Sort::shellSort(std::vector<std::vector<std::string>> &vec, int option) {
     //end timer
     auto end =  std::chrono::high_resolution_clock::now();
     //calculate time taken
-    auto time = end - start;
+    auto time2 = end - start;
     //convert to double in seconds
-    double dTime = time.count()/1000000.0;
+    double dTime = time2.count();
     return dTime;
 }
 
@@ -174,9 +174,9 @@ double Sort::quickSort(std::vector<std::vector<std::string>>& vec, int option, i
     //end timer
     auto end =  std::chrono::high_resolution_clock::now();
     //calculate time taken
-    auto time = end - start;
+    auto time2 = end - start;
     //convert to double in seconds
-    double dTime = time.count()/1000000.0;
+    double dTime = time2.count();
     return dTime;
 }
 
@@ -219,7 +219,6 @@ int Sort::partition(std::vector<std::vector<std::string>>& vec, int option, int 
 //it's O(1) operation
 std::vector<std::vector<std::string>> Sort::findRecipes(std::string &mainIngredient) {
     std::vector<std::vector<std::string>> temp;
-    std::cout << "find recipes is running" << std::endl;
     //this is basically a crappy linear search !
     for(auto& ingredients: recipeIngredients){
         std::vector<std::string> subTemp;

@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <chrono>
 
 class Sort{
 private:
@@ -21,7 +22,8 @@ public:
     //OPTIONS ARE ONLY: 1, sort by amount of ingredients; 2, sort by # of steps; 3, sort by time it takes
     //WILL BREAK IF YOU USE 0, SORT ALPHABETICALLY
     //not done
-    static std::vector<std::vector<std::string>> shellSort(std::vector<std::vector<std::string>> vec, int option);
+    static void shellSort(std::vector<std::vector<std::string>> &vec, int option);
+    //static std::vector<std::vector<std::string>> findRecipesS(std::vector<std::vector<std::string>> vec, std::string& mainIngredient);
     //finished
     static void quickSort(std::vector<std::vector<std::string>>& vec, int option, int low, int high);
     static std::vector<std::vector<std::string>> findRecipes(std::string& mainIngredient);

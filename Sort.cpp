@@ -11,7 +11,7 @@ std::vector<std::vector<std::string>> Sort::recipeData; //stores recipe name, in
 std::vector<std::string> Sort::parseIngredients(std::string str) {
     std::vector<std::string> temp;
     //removes '[' and ']'
-    std::string newStr = str.substr(1, str.size()-2);
+    std::string newStr = str.substr(1, str.size()-1);
 
     //parsing
     std::istringstream iStr(newStr);
@@ -64,7 +64,11 @@ void Sort::readCSV(std::string file) {
                 // Read quoted ingredients, skips anything that doesn't match formats
                 //also generally no one would have them lying around their pantry anyways !
                 //this specifically goes after recipes that have ingredients with double quotes...
-                if (!std::getline(s, col, '"') || !std::getline(s, ingredients, '"')) {
+                if (!std::getline(s, col, '"') || !std::getline(s, ingredients, ']')) {
+                    continue;
+                }
+                //extraneous double quote
+                if (!std::getline(s, col, '"')) {
                     continue;
                 }
                 //parses ingredient string into a vector

@@ -10,8 +10,10 @@ int main() {
     std::string inge = "acorn squash";
 
     std::vector<std::vector<std::string>> recipesIncluded = Sort::findRecipes(inge);
-//   Sort::quickSort(recipesIncluded, 1, 0, recipesIncluded.size()-1);
-    Sort::shellSort(recipesIncluded, 1);
+   double time = Sort::quickSort(recipesIncluded, 1, 0, recipesIncluded.size()-1);
+//    double time = Sort::shellSort(recipesIncluded, 1);
+
+    std::cout << time << std::endl;
 
     for (const auto& col : recipesIncluded) {
         for(auto& e: col) {

@@ -120,15 +120,23 @@ void Sort::readCSV(std::string file) {
     }
 }
 
-void Sort::shellSort(std::vector<std::vector<std::string>> &vec, int option) {
+double Sort::shellSort(std::vector<std::vector<std::string>> &vec, int option) {
+    //start timer
+    auto start =  std::chrono::high_resolution_clock::now();
+
+    //gap is equal to half the size of the recipe list
     int n = vec.size();
     int gap = n/2;
+    //gap decreases by half each loop until it reaches 0
     while(gap > 0){
+        //starting from the gap loop though each element comparing its gap pair
         for(int i = gap; i < n; i++){
+            //get the first element for comparisons
             std::vector<std::string> temp = vec[i];
             int tempVar = stoi(temp[option]);
             int j = i;
 
+            //compare with gap partner until in right spot
             while(j >= gap && stoi(vec[j - gap][option]) > tempVar){
                 vec[j] = vec[j - gap];
                 j -= gap;
@@ -136,19 +144,25 @@ void Sort::shellSort(std::vector<std::vector<std::string>> &vec, int option) {
             vec[j] = temp;
         }
 
+        //decrease gap by half
         gap /= 2;
     }
+
+    //end timer
+    auto end =  std::chrono::high_resolution_clock::now();
+    //calculate time taken
+    auto time = end - start;
+    //convert to double in seconds
+    double dTime = time.count()/1000000.0;
+    return dTime;
 }
 
-//these functions should return a vector which is a resorted vector of all the recipes that share a common main ingredient
-//use findRecipes() for this, I would take a random string from the excel sheet in the google drive linked
-//unordered_map recipeIngredients or recipeStats, that is there to assist you in looking up a recipe's ingredients and stats
-//it's O(1) operation
-
 //taken from Sorting slides
-void Sort::quickSort(std::vector<std::vector<std::string>>& vec, int option, int low, int high) {
+double Sort::quickSort(std::vector<std::vector<std::string>>& vec, int option, int low, int high) {
+    //start timer
+    auto start = std::chrono::high_resolution_clock::now();
+
     //not done if the 'pointers' aren't past eachother
-//    auto start =
     if(low < high){
         //index of the pivot/what we sort around
         int pivot = partition(vec, option, low, high);
@@ -156,6 +170,14 @@ void Sort::quickSort(std::vector<std::vector<std::string>>& vec, int option, int
         quickSort(vec, option, low, pivot - 1);
         quickSort(vec, option, pivot + 1, high);
     }
+
+    //end timer
+    auto end =  std::chrono::high_resolution_clock::now();
+    //calculate time taken
+    auto time = end - start;
+    //convert to double in seconds
+    double dTime = time.count()/1000000.0;
+    return dTime;
 }
 
 //taken from Sorting slides
@@ -191,6 +213,10 @@ int Sort::partition(std::vector<std::vector<std::string>>& vec, int option, int 
     return down;
 }
 
+//these functions should return a vector which is a resorted vector of all the recipes that share a common main ingredient
+//use findRecipes() for this, I would take a random string from the excel sheet in the google drive linked
+//unordered_map recipeIngredients or recipeStats, that is there to assist you in looking up a recipe's ingredients and stats
+//it's O(1) operation
 std::vector<std::vector<std::string>> Sort::findRecipes(std::string &mainIngredient) {
     std::vector<std::vector<std::string>> temp;
     std::cout << "find recipes is running" << std::endl;

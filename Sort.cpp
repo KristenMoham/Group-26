@@ -96,6 +96,7 @@ void Sort::readCSV(std::string file) {
     }
 }
 
+//shellSort code from slides for shell and insertion sort
 double Sort::shellSort(std::vector<std::vector<std::string>> &vec, int option) {
     //start timer
     auto start =  std::chrono::high_resolution_clock::now();

@@ -1,12 +1,14 @@
 <H1> COP3530 - Project 3 </h1>
 This is the template for Project 3 repositories. It includes all the assignment instructions and documentation to help you use GitHub.
 
-GOOGLE DRIVE LINK TO DATA BASE:
+GOOGLE DRIVE LINK TO DATA BASE: <br>
 https://drive.google.com/file/d/1PDoE2DO3gpwg6RQZ4bat1g6vmiT-vHbu/view?usp=sharing <br>
-https://docs.google.com/document/d/1NC8Njyv1HR5k-26Ke2xbwGQzt7dmbvKM6bEEFb9177o/edit?usp=sharing <br>
-Insert csv file into cmake-build-debug folder
+Insert csv file into cmake-build-debug folder <br>
 
-HOW TO USE
+LINK TO REPORT <br>
+https://docs.google.com/document/d/1NC8Njyv1HR5k-26Ke2xbwGQzt7dmbvKM6bEEFb9177o/edit?usp=sharing <br>
+
+HOW TO USE <br>
 After pressing run a prompt for a main ingredient will pop up in terminal, insert any ingredient you wish to find recipes for. Afterwards, shelfChef will ask what catagory you would like to sort by, the options are by amount of ingredients, # of steps, or time it takes. Select an option by typing the number that is next to the option. Lastly shelfChef will ask if shell sort or quick sort should be used. Select and option by typing the number next to option. ShelfChef will display the time it took for the sort to run and the top five recipes based on the options picked. More recipes can be seen by typing y and shelfChef can be exited by typing n.
 
 <h2> Table of Contents </h2>

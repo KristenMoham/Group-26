@@ -1,5 +1,4 @@
 ﻿//
-// Created by amyho on 12/1/2024.
 //
 #include "Sort.h"
 //Made static, this is required or error
@@ -89,33 +88,6 @@ void Sort::readCSV(std::string file) {
             //required for trys
             catch(const std::exception& e){}
         }
-        //debug
-//        if (!recipeData.empty()) {
-//            for(const auto& row : recipeData){
-//                for (const auto& col : row) {
-//                    std::cout << col << " ";
-//                }
-//                std::cout << std::endl;
-//            }
-//
-//            //std::cout << std::endl;
-//            //std::cout << recipeData.size();
-//            //std::cout << "\n";
-//        }
-//        if (!recipeIngredients.empty()) {
-//            for (const auto& col : recipeIngredients[recipeData[0][0]]) {
-//                std::cout << col << " ";
-//            }
-//        }
-//        if (!recipeStats.empty()) {
-//            for (const auto& col : recipeStats) {
-//                std::cout << col.first << " ";
-//                for(auto& e: col.second) {
-//                    std::cout << e << " ";
-//                }
-//                std::cout << std::endl;
-//            }
-//        }
 
     }
     else{
@@ -237,12 +209,5 @@ std::vector<std::vector<std::string>> Sort::findRecipes(std::string &mainIngredi
             temp.push_back(subTemp);
         }
     }
-//    for (const auto& col : temp) {
-//        for(auto& e: col) {
-//            std::cout << e << " ";
-//        }
-//        std::cout << std::endl;
-//    }
-
     return temp;
 }

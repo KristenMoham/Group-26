@@ -2,8 +2,8 @@
 This is the template for Project 3 repositories. It includes all the assignment instructions and documentation to help you use GitHub.
 
 GOOGLE DRIVE LINK TO DATA BASE:
-https://drive.google.com/file/d/1PDoE2DO3gpwg6RQZ4bat1g6vmiT-vHbu/view?usp=sharing
-https://docs.google.com/document/d/1NC8Njyv1HR5k-26Ke2xbwGQzt7dmbvKM6bEEFb9177o/edit?usp=sharing
+https://drive.google.com/file/d/1PDoE2DO3gpwg6RQZ4bat1g6vmiT-vHbu/view?usp=sharing <br>
+https://docs.google.com/document/d/1NC8Njyv1HR5k-26Ke2xbwGQzt7dmbvKM6bEEFb9177o/edit?usp=sharing <br>
 Insert csv file into cmake-build-debug folder
 
 HOW TO USE

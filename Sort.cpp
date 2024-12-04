@@ -120,17 +120,35 @@ void Sort::readCSV(std::string file) {
     }
 }
 
+void Sort::shellSort(std::vector<std::vector<std::string>> &vec, int option) {
+    int n = vec.size();
+    int gap = n/2;
+    while(gap > 0){
+        for(int i = gap; i < n; i++){
+            std::vector<std::string> temp = vec[i];
+            int tempVar = stoi(temp[option]);
+            int j = i;
+
+            while(j >= gap && stoi(vec[j - gap][option]) > tempVar){
+                vec[j] = vec[j - gap];
+                j -= gap;
+            }
+            vec[j] = temp;
+        }
+
+        gap /= 2;
+    }
+}
+
 //these functions should return a vector which is a resorted vector of all the recipes that share a common main ingredient
 //use findRecipes() for this, I would take a random string from the excel sheet in the google drive linked
 //unordered_map recipeIngredients or recipeStats, that is there to assist you in looking up a recipe's ingredients and stats
 //it's O(1) operation
-std::vector<std::vector<std::string>> Sort::shellSort(std::vector<std::vector<std::string>> vec, int option) {
-    return std::vector<std::vector<std::string>>();
-}
 
 //taken from Sorting slides
 void Sort::quickSort(std::vector<std::vector<std::string>>& vec, int option, int low, int high) {
     //not done if the 'pointers' aren't past eachother
+//    auto start =
     if(low < high){
         //index of the pivot/what we sort around
         int pivot = partition(vec, option, low, high);
@@ -139,6 +157,7 @@ void Sort::quickSort(std::vector<std::vector<std::string>>& vec, int option, int
         quickSort(vec, option, pivot + 1, high);
     }
 }
+
 //taken from Sorting slides
 int Sort::partition(std::vector<std::vector<std::string>>& vec, int option, int low, int high) {
     //std::string pivot = vec[low][option];
@@ -172,7 +191,7 @@ int Sort::partition(std::vector<std::vector<std::string>>& vec, int option, int 
     return down;
 }
 
-std::vector<std::vector<std::string>> Sort::findRecipes(std::string& mainIngredient) {
+std::vector<std::vector<std::string>> Sort::findRecipes(std::string &mainIngredient) {
     std::vector<std::vector<std::string>> temp;
     std::cout << "find recipes is running" << std::endl;
     //this is basically a crappy linear search !
@@ -184,7 +203,6 @@ std::vector<std::vector<std::string>> Sort::findRecipes(std::string& mainIngredi
             subTemp.push_back(recipeStats[ingredients.first][0]); //adds in amt of ingredients
             subTemp.push_back(recipeStats[ingredients.first][1]); //adds in # of steps
             subTemp.push_back(recipeStats[ingredients.first][2]); //adds in time it takes
-            subTemp.push_back(recipeStats[ingredients.first][3]); //adds in the ID of recipe
             //pushes the above into a vec that will contain all recipes that has this main ingredient
             temp.push_back(subTemp);
         }

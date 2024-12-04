@@ -2,7 +2,7 @@
 #include "Sort.h"
 //for testing
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    //std::cout << "Hello, World!" << std::endl;
     Sort obj;
 
     Sort::readCSV("Sorted-Recipes.csv");
@@ -10,7 +10,8 @@ int main() {
     std::string inge = "acorn squash";
 
     std::vector<std::vector<std::string>> recipesIncluded = Sort::findRecipes(inge);
-    Sort::quickSort(recipesIncluded, 1, 0, recipesIncluded.size()-1);
+//   Sort::quickSort(recipesIncluded, 1, 0, recipesIncluded.size()-1);
+    Sort::shellSort(recipesIncluded, 1);
 
     for (const auto& col : recipesIncluded) {
         for(auto& e: col) {

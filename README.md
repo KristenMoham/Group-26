@@ -3,6 +3,7 @@ This is the template for Project 3 repositories. It includes all the assignment 
 
 GOOGLE DRIVE LINK TO DATA BASE:
 https://drive.google.com/file/d/1PDoE2DO3gpwg6RQZ4bat1g6vmiT-vHbu/view?usp=sharing
+https://docs.google.com/document/d/1NC8Njyv1HR5k-26Ke2xbwGQzt7dmbvKM6bEEFb9177o/edit?usp=sharing
 
 <h2> Table of Contents </h2>
 

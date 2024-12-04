@@ -203,6 +203,7 @@ std::vector<std::vector<std::string>> Sort::findRecipes(std::string &mainIngredi
             subTemp.push_back(recipeStats[ingredients.first][0]); //adds in amt of ingredients
             subTemp.push_back(recipeStats[ingredients.first][1]); //adds in # of steps
             subTemp.push_back(recipeStats[ingredients.first][2]); //adds in time it takes
+            subTemp.push_back(recipeStats[ingredients.first][3]); //adds in the ID of recipe
             //pushes the above into a vec that will contain all recipes that has this main ingredient
             temp.push_back(subTemp);
         }
